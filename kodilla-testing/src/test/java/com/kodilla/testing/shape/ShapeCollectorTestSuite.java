@@ -2,9 +2,6 @@ package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class ShapeCollectorTestSuite {
 
@@ -25,6 +22,7 @@ public class ShapeCollectorTestSuite {
         testCounter++;
         System.out.println("Preparing to execute test #" + testCounter);
     }
+
     @Nested
     @DisplayName("Tests for shapes")
     class TestShapes {
@@ -33,11 +31,11 @@ public class ShapeCollectorTestSuite {
         public void addFigure() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
-            Shape shape = new Square(6);
             //When
-            shapeCollector.addFigure(shape);
+            shapeCollector.addFigure(new Square(6));
             //Then
-            Assertions.assertEquals(1, shapeCollector.getShapeCollection().size());
+            int size = shapeCollector.getFigureSize();
+            Assertions.assertEquals(1, size);
         }
 
         @Test
@@ -66,17 +64,15 @@ public class ShapeCollectorTestSuite {
         }
 
         @Test
-        public void showFigures() {
+        public void testShowFigures() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
-            Shape shape = new Square(6);
-            shapeCollector.addFigure(shape);
-            ArrayList<Shape> shapeList= new ArrayList<>();
-            shapeList.add(shape);
+            shapeCollector.addFigure(new Square(2));
+            shapeCollector.addFigure(new Square(5));
             //When
-            List<Shape> shapeResultList = shapeCollector.getShapeCollection();
+            String wynik = shapeCollector.showFigures();
             //Then
-            Assertions.assertEquals(shapeList.toString(), shapeResultList.toString());
+            Assertions.assertEquals("SquareSquare", wynik);
         }
     }
 }

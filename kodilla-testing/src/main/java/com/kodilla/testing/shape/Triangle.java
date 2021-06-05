@@ -6,13 +6,11 @@ public class Triangle implements Shape {
 
     private String name = "Triangle";
     private double sideLengthA;
-    private double sideLengthB;
-    private double sideLengthC;
+    private double heightTriangle;
 
-    public Triangle(double sideLengthA, double sideLengthB, double sideLengthC) {
+    public Triangle(double sideLengthA, double heightTriangle) {
         this.sideLengthA = sideLengthA;
-        this.sideLengthB = sideLengthB;
-        this.sideLengthC = sideLengthC;
+        this.heightTriangle = heightTriangle;
     }
 
     @Override
@@ -23,8 +21,7 @@ public class Triangle implements Shape {
         Triangle triangle = (Triangle) o;
 
         if (Double.compare(triangle.sideLengthA, sideLengthA) != 0) return false;
-        if (Double.compare(triangle.sideLengthB, sideLengthB) != 0) return false;
-        if (Double.compare(triangle.sideLengthC, sideLengthC) != 0) return false;
+        if (Double.compare(triangle.heightTriangle, heightTriangle) != 0) return false;
         return Objects.equals(name, triangle.name);
     }
 
@@ -35,9 +32,7 @@ public class Triangle implements Shape {
         result = name != null ? name.hashCode() : 0;
         temp = Double.doubleToLongBits(sideLengthA);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(sideLengthB);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(sideLengthC);
+        temp = Double.doubleToLongBits(heightTriangle);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
@@ -49,6 +44,6 @@ public class Triangle implements Shape {
 
     @Override
     public double getField() {
-        return (sideLengthA + sideLengthB + sideLengthC) / 2;
+        return 0.5 * sideLengthA * heightTriangle;
     }
 }

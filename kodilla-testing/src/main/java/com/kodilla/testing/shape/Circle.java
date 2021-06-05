@@ -39,6 +39,6 @@ public class Circle implements Shape {
 
     @Override
     public double getField() {
-        return Math.PI * Math.pow(radius,12);
+        return Math.PI * (radius * radius);
     }
 }
