@@ -31,11 +31,13 @@ public class ShapeCollectorTestSuite {
         public void addFigure() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
+            Shape circle = new Circle(8);
+            int before = shapeCollector.getShapesListSize();
             //When
-            shapeCollector.addFigure(new Square(6));
+            shapeCollector.addFigure(circle);
             //Then
-            int size = shapeCollector.getFigureSize();
-            Assertions.assertEquals(1, size);
+            int after = shapeCollector.getShapesListSize();
+            Assertions.assertTrue(after > before);
         }
 
         @Test
@@ -70,9 +72,9 @@ public class ShapeCollectorTestSuite {
             shapeCollector.addFigure(new Square(2));
             shapeCollector.addFigure(new Square(5));
             //When
-            String wynik = shapeCollector.showFigures();
+            String result = shapeCollector.showFigures();
             //Then
-            Assertions.assertEquals("SquareSquare", wynik);
+            Assertions.assertEquals("SquareSquare", result);
         }
     }
 }
