@@ -32,6 +32,10 @@ public class Square implements Shape {
         return result;
     }
 
+    public String getFigureSize() {
+        return "(" + sideLength + ")";
+    }
+
     @Override
     public String getShapeName() {
         return name;

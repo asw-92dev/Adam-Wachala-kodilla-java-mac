@@ -37,6 +37,11 @@ public class Triangle implements Shape {
         return result;
     }
 
+    public String getFigureSize() {
+        return "(" + sideLengthA + ", " + heightTriangle + ")";
+    }
+
+
     @Override
     public String getShapeName() {
         return name;

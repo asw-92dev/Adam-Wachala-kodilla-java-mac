@@ -29,14 +29,13 @@ public class ShapeCollector {
 
     public String showFigures() {
         String result = "";
-        for (int i=0; i < shapes.size(); i++) {
-            if (i == 0) {
-                result = shapes.get(i).getShapeName() + "("+ shapes.get(i).getField()+")";
-            } else {
-                result = result + " " + shapes.get(i).getShapeName() + "("+ shapes.get(i).getField()+")";
+        for (int i = 0; i < shapes.size(); i++) {
+            result = result + shapes.get(i).getShapeName() + shapes.get(i).getFigureSize();
+            if (i < shapes.size() - 1) {
+                result += ", ";
             }
         }
-        return result;
+            return result;
     }
 
     public int getShapesListSize(){

@@ -32,6 +32,10 @@ public class Circle implements Shape {
         return result;
     }
 
+    public String getFigureSize() {
+        return "(" + radius + ")";
+    }
+
     @Override
     public String getShapeName() {
         return name;

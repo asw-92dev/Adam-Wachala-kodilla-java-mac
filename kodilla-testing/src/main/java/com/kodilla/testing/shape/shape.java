@@ -4,4 +4,5 @@ interface Shape {
 
     String getShapeName();
     double getField();
+    String getFigureSize();
 }
