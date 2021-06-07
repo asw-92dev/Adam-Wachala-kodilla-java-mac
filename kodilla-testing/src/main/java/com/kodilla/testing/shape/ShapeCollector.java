@@ -29,8 +29,12 @@ public class ShapeCollector {
 
     public String showFigures() {
         String result = "";
-        for (Shape show : shapes) {
-            result += show.getShapeName();
+        for (int i=0; i < shapes.size(); i++) {
+            if (i == 0) {
+                result = shapes.get(i).getShapeName() + "("+ shapes.get(i).getField()+")";
+            } else {
+                result = result + " " + shapes.get(i).getShapeName() + "("+ shapes.get(i).getField()+")";
+            }
         }
         return result;
     }
