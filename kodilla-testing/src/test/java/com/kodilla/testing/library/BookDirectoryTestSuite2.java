@@ -14,7 +14,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class BookDirectoryTestSuite {
+public class BookDirectoryTestSuite2 {
 
     @Mock
     private LibraryDatabase libraryDatabaseMock;
