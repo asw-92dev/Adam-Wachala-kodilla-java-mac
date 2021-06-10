@@ -16,7 +16,6 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class BookDirectoryTestSuite {
 
-    private static int n;
     @Mock
     private LibraryDatabase libraryDatabaseMock;
     private static final Random RANDOM = new Random();
