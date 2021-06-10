@@ -16,6 +16,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class BookDirectoryTestSuite {
 
+    private static int n;
     @Mock
     private LibraryDatabase libraryDatabaseMock;
     private static final Random RANDOM = new Random();
@@ -27,6 +28,15 @@ public class BookDirectoryTestSuite {
             resultList.add(theBook);
         }
         return resultList;
+    }
+
+    private static List createBooks(int n) {
+        List<Book> books = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            books.add(new Book("title" + RANDOM.nextInt(40), "author" + RANDOM.nextInt(15),
+                    RANDOM.nextInt(120) + 1900));
+        }
+        return books;
     }
 
     @Test
@@ -89,7 +99,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    void listBooksInHandsOfIsNull() {
+    void listBooksInHandsOfIsEmpty() {
         //Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser libraryUser = new LibraryUser("Adam", "Nowak", "12345678");
@@ -106,11 +116,8 @@ public class BookDirectoryTestSuite {
         //Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser adam = new LibraryUser("Adam", "Nowak", "12345678");
-        List<Book> resultListOfBooks = new ArrayList<>();
-        Book book = new Book("title" + RANDOM.nextInt(40), "author" + RANDOM.nextInt(15),
-                RANDOM.nextInt(120) + 1900);
-        resultListOfBooks.add(book);
-        when(libraryDatabaseMock.listBooksInHandsOf(adam)).thenReturn(resultListOfBooks);
+        List<Book> books = createBooks(1);
+        when(libraryDatabaseMock.listBooksInHandsOf(adam)).thenReturn(books);
         //When
         List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(adam);
         //Then
@@ -122,23 +129,8 @@ public class BookDirectoryTestSuite {
         //Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser adam = new LibraryUser("Adam", "surname", "12345678");
-        List<Book> resultListOfBooks = new ArrayList<>();
-        Book book1 = new Book("title" + RANDOM.nextInt(40), "author" + RANDOM.nextInt(15),
-                RANDOM.nextInt(120) + 1900);
-        Book book2 = new Book("title" + RANDOM.nextInt(40), "author" + RANDOM.nextInt(15),
-                RANDOM.nextInt(120) + 1900);
-        Book book3 = new Book("title" + RANDOM.nextInt(40), "author" + RANDOM.nextInt(15),
-                RANDOM.nextInt(120) + 1900);
-        Book book4 = new Book("title" + RANDOM.nextInt(40), "author" + RANDOM.nextInt(15),
-                RANDOM.nextInt(120) + 1900);
-        Book book5 = new Book("title" + RANDOM.nextInt(40), "author" + RANDOM.nextInt(15),
-                RANDOM.nextInt(120) + 1900);
-        resultListOfBooks.add(book1);
-        resultListOfBooks.add(book2);
-        resultListOfBooks.add(book3);
-        resultListOfBooks.add(book4);
-        resultListOfBooks.add(book5);
-        when(libraryDatabaseMock.listBooksInHandsOf(adam)).thenReturn(resultListOfBooks);
+        List books = createBooks(5);
+        when(libraryDatabaseMock.listBooksInHandsOf(adam)).thenReturn(books);
         //When
         List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(adam);
         //Then
