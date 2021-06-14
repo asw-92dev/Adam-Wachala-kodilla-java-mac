@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static org.mockito.Mockito.when;
 
@@ -36,12 +35,11 @@ public class StatisticsCalcTestSuite {
 
     @Mock
     private Statistics statisticsMock;
-    private static final Random RANDOM = new Random();
 
-    private static List createUser(int n) {
+    private static List createUsers(int n) {
         List<String> users = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            users.add("User" + RANDOM.nextInt(500));
+            users.add("User" + i);
         }
         return users;
     }
@@ -50,7 +48,7 @@ public class StatisticsCalcTestSuite {
     void testCalculateAdvStatisticsPostsZero() {
         //Given
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statisticsMock);
-        List users = createUser(3);
+        List users = createUsers(3);
         int postsCount1 = 0;
         int comments1 = 10;
 
@@ -72,7 +70,7 @@ public class StatisticsCalcTestSuite {
     void testCalculateAdvStatisticsPosts1000() {
         //Given
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statisticsMock);
-        List users = createUser(3);
+        List users = createUsers(3);
         int postsCount1 = 1000;
         int comments1 = 10;
 
@@ -94,7 +92,7 @@ public class StatisticsCalcTestSuite {
     void testCalculateAdvStatisticsCommentsZero() {
         //Given
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statisticsMock);
-        List users = createUser(3);
+        List users = createUsers(3);
         int postsCount1 = 50;
         int comments1 = 0;
 
@@ -116,7 +114,7 @@ public class StatisticsCalcTestSuite {
     void testCalculateAdvStatisticsCommentsLessThanPosts() {
         //Given
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statisticsMock);
-        List users = createUser(3);
+        List users = createUsers(3);
         int postsCount1 = 100;
         int comments1 = 50;
 
@@ -138,7 +136,7 @@ public class StatisticsCalcTestSuite {
     void testCalculateAdvStatisticsCommentsMoreThanPosts() {
         //Given
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statisticsMock);
-        List users = createUser(3);
+        List users = createUsers(3);
         int postsCount1 = 50;
         int comments1 = 100;
 
@@ -182,7 +180,7 @@ public class StatisticsCalcTestSuite {
     void testCalculateAdvStatisticsUsers100() {
         //Given
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statisticsMock);
-        List users = createUser(100);
+        List users = createUsers(100);
         int postsCount1 = 100;
         int comments1 = 100;
 

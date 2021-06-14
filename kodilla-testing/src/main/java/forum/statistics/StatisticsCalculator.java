@@ -41,16 +41,11 @@ public class StatisticsCalculator {
         posts = statistics.postsCount();
         comments = statistics.commentsCount();
         users = statistics.usersNames().size();
-        if (statistics.usersNames().size() == 0) {
-            postsPerUser = 0;
-            commentsPerUser = 0;
-        } else {
+        if (users > 0) {
             postsPerUser = statistics.postsCount() / statistics.usersNames().size();
             commentsPerUser = statistics.commentsCount() / statistics.usersNames().size();
         }
-        if (statistics.postsCount() == 0) {
-            commentsPerPost = 0;
-        } else {
+        if (posts > 0) {
             commentsPerPost = statistics.commentsCount() / statistics.postsCount();
         }
     }
