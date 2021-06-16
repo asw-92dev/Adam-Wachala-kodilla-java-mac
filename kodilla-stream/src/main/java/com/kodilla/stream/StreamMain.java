@@ -1,5 +1,6 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
@@ -7,6 +8,7 @@ public class StreamMain {
 
     public static void main(String[] args) {
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
 
         System.out.println("Calculating expressions with lambdas");
         expressionExecutor.executeExpression(10,5, (a,b) -> a + b);
@@ -19,5 +21,12 @@ public class StreamMain {
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
+
+        System.out.println("Poem Decorator");
+        System.out.println(poemBeautifier.beautify("Kodilla.com", text -> text.toUpperCase()));
+        System.out.println(poemBeautifier.beautify("Kodilla.com", text -> text.toLowerCase()));
+        System.out.println(poemBeautifier.beautify("Kodilla.com", text -> text.repeat(3)));
+        System.out.println(poemBeautifier.beautify("Kodilla.com", text -> "ABC" + " " + text + " " + "ABC"));
+        System.out.println(poemBeautifier.beautify("Kodilla.com", text -> text.replace("", "*")));
     }
 }
